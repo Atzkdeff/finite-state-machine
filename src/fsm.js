@@ -32,8 +32,9 @@ class FSM {
     getStates(event) {
         let arr = [];
         let i=0;
+        let key;
         if (!event) {
-            for (var key in this.config.states) {
+            for (key in this.config.states) {
                 arr[i] = key;
                 i++;
             }
@@ -45,15 +46,12 @@ class FSM {
                 arr[i] = key;
                 i++;
             }
-
-
         }
         return arr;
     }
 
     undo() {
         if (!this.prevState) return false;
-
         this.redoState = this.state;
         this.state = this.prevState;
         this.prevState = null;
